@@ -830,6 +830,7 @@ class TypesTest(fixtures.TestBase):
             Column("c1", VARCHAR(50)),
             Column("c2", NVARCHAR(250)),
             Column("c3", CHAR(200)),
+            Column("c4", NCHAR(300)),
         )
         t1.create()
         m2 = MetaData(testing.db)
@@ -837,6 +838,7 @@ class TypesTest(fixtures.TestBase):
         eq_(t2.c.c1.type.length, 50)
         eq_(t2.c.c2.type.length, 250)
         eq_(t2.c.c3.type.length, 200)
+        eq_(t2.c.c4.type.length, 300)
 
     @testing.provide_metadata
     def test_long_type(self):
